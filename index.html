@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Gravify : Falling with Style: A CSS3 Bouncing Effect that Mimics Gravity">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Gravify</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/albiebrown/gravify">View on GitHub</a>
+
+          <h1 id="project_title">Gravify</h1>
+          <h2 id="project_tagline">Falling with Style: A CSS3 Bouncing Effect that Mimics Gravity</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/albiebrown/gravify/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/albiebrown/gravify/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="the-problem" class="anchor" href="#the-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Problem</h3>
+
+<p>A long, long time ago (in the summer of 2014), when I did everything in my stylesheet, I came across a peculiar problem. I wanted to use CSS3 to give a ball object the effect of bouncing (or "falling with style") in accordance with the natural laws of physics. I scoured the internet for some way to breathe gravity into this ball. After hours looking through StackOverflow and CSS docs, I had found a few options, though I remained unsatisfied. Using JavaScript and JQuery would be excessive and inefficient for such a minor task that should be easily solvable with the existing animation options in CSS3. I first tried using the ease-in/out transitions that CSS provides, and while these appeared smooth, they did not provide a feeling of natural acceleration. Many sites I visited suggested an extensive keyframe function to time each bounce. These functions appeared verbose and redundant in code, and every new bouncing object would need an entirely different function. What's more, the effect created still appeared choppy and unprofessional. </p>
+
+<h3>
+<a id="the-solution" class="anchor" href="#the-solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution</h3>
+
+<p>Finally, I came across someone's suggestion to try using a cubic-bezier curve, though all the sample functions I found we slightly off. Still, this was the closest I had come. I started from scratch, spending hours of trial-and-error to fine tune this versatile function, until finally, something just clicked.</p>
+
+<p>First, define your bounce animation by setting the position change for your bounce using a keyframe function:</p>
+
+<pre><code>@-webkit-keyframes bounce {
+  from, to {
+    bottom: [bottom of bounce location]px;
+    height: [squished height at bottom of bounce]px;
+  }
+  75% {
+    bottom: [top of bounce location]px;
+    height: [full height at top of bounce]px;
+  }
+}
+</code></pre>
+
+<p>Now, by adding just one CSS3 transition/timing to your stylesheet, you may give your bounce animation the effect of accelerating under a gravitational force:</p>
+
+<pre><code>#OBJECT-TO-BOUNCE {
+    /*duration per bounce ≈ (((top of bounce location) - (bottom of bounce location))/125)*/ 
+    -webkit-animation: bounce [duration per bounce] cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+</code></pre>
+
+<p><img src="https://raw.githubusercontent.com/albiebrown/gravify/master/images/lamp.png"></p>
+
+<p><img src="https://raw.githubusercontent.com/albiebrown/gravify/master/images/gravify.png" alt=""></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Gravify maintained by <a href="https://github.com/albiebrown">albiebrown</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
