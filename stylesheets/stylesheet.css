@@ -423,3 +423,419 @@ Small Device Styles
   }
 
 }
+
+/*******************************************************************************
+Ball Bounce
+*******************************************************************************/
+#container1 {
+  border: none;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  left: 200px;
+  -webkit-animation: bounce-ball .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  animation: bounce-ball .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: bounce-ball .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -o-animation: bounce-ball .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+#container2 {
+  border: none;
+  height: 150px;
+  width: 150px;
+  -webkit-animation: ball-container .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  animation: ball-container .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: ball-container .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -o-animation: ball-container .7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+#ball {
+  border: none;
+  height: inherit;
+  width: 150px;
+}
+
+
+
+#shadow {
+  border: none;
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  bottom: 410px;
+  left: 200px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, .1);
+  box-shadow: 0px 0 20px 35px rgba(20,20,20,.1);
+}
+
+.shadow-bounce {
+  -webkit-animation: shadow-bounce .7s cubic-bezier(0.10, 2.40, 0.85, 2.50) infinite;
+  animation: shadow-bounce .7s cubic-bezier(0.10, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: shadow-bounce .7s cubic-bezier(0.10, 2.40, 0.85, 2.50) infinite;
+  -o-animation: shadow-bounce .7s cubic-bezier(0.10, 2.40, 0.85, 2.50) infinite;
+}
+
+.ball-roll {
+  -webkit-animation: ball-roll .7s linear infinite;
+  animation: ball-roll .7s linear infinite;
+  -wmoz-animation: ball-roll 1.2s ease infinite;
+  -o-animation: ball-roll 1.2s ease infinite;
+}
+
+/*for modern browsers*/
+@-webkit-keyframes ball-roll {
+  to {
+    -webkit-transform: rotate(-180deg);
+  }
+}
+
+@-webkit-keyframes shadow-bounce {
+  from, to {
+    -webkit-transform: scale(.35);
+  }
+  80% {
+    -webkit-transform: scale(.65);
+  }
+}
+
+@-webkit-keyframes ball-container {
+  from, to {
+    height: 130px;
+  }
+  90% {
+    height: 145px;
+  }
+}
+
+
+@-webkit-keyframes bounce-ball {
+  from, to {
+    bottom: 600px;
+    height: 85px;
+  }
+  75% {
+    bottom: 695px;
+    height: 93px;
+  }
+}
+
+/*for some specialty browsers*/
+@keyframes ball-roll {
+  to {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes shadow-bounce {
+  from, to {
+    transform: scale(.35);
+  }
+  80% {
+    transform: scale(.65);
+  }
+}
+
+@keyframes ball-container {
+  from, to {
+    height: 130px;
+  }
+  90% {
+    height: 145px;
+  }
+}
+
+@keyframes bounce-ball {
+  from, to {
+    bottom: 600px;
+    height: 85px;
+  }
+  75% {
+    bottom: 695px;
+    height: 93px;
+  }
+}
+
+/*for mozilla browsers*/
+@-moz-keyframes ball-roll {
+  to {
+    -moz-transform: rotate(-180deg);
+  }
+}
+
+@-moz-keyframes shadow-bounce {
+  from, to {
+    -moz-transform: scale(.35);
+  }
+  80% {
+    -moz-transform: scale(.65);
+  }
+}
+
+@-moz-keyframes ball-container {
+  from, to {
+    height: 130px;
+  }
+  90% {
+    height: 145px;
+  }
+}
+
+@-moz-keyframes bounce-ball {
+  from, to {
+    bottom: 600px;
+    height: 85px;
+  }
+  75% {
+    bottom: 695px;
+    height: 93px;
+  }
+}
+
+
+/*for opera browsers*/
+@-o-keyframes ball-roll {
+  to {
+    -o-transform: rotate(-180deg);
+  }
+}
+
+@-o-keyframes shadow-bounce {
+  from, to {
+    -o-transform: scale(.35);
+  }
+  80% {
+    -o-transform: scale(.65);
+  }
+}
+
+@-o-keyframes ball-container {
+  from, to {
+    height: 130px;
+  }
+  90% {
+    height: 145px;
+  }
+}
+
+@-o-keyframes bounce-ball {
+  from, to {
+    bottom: 600px;
+    height: 85px;
+  }
+  75% {
+    bottom: 695px;
+    height: 93px;
+  }
+}
+
+
+
+/*******************************************************************************
+Lamp Bounce
+*******************************************************************************/
+
+#lamp {
+  position: absolute;
+  height: 63px;
+  width: 50px;
+  left: 340px;
+  /*duration per bounce ≈ (((top of bounce location) - (bottom of bounce location))/125)*/
+  -webkit-animation: bounce .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  animation: bounce .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: bounce .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -o-animation: bounce .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.gravifytext {
+  position: absolute;
+  bottom: 0px;
+  width: 519px;
+}
+
+
+#gravify {
+  position: absolute;
+  bottom: 63px;
+}
+
+#itext {
+  display: inline-block;
+  width: 59px;
+  left: 319px;
+  -webkit-animation: squish .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  animation: squish .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: squish .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -o-animation: squish .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+
+}
+
+#gravtext {
+  display: inline-block;
+  position: absolute;
+  width: 319px;
+}
+
+#fytext {
+  display: inline-block;
+  position: absolute;
+  width: 139px;
+  left: 378px;
+}
+
+
+@-webkit-keyframes bounce {
+  from, to {
+    bottom: 95px;
+  }
+  75% {
+    bottom: 130px;
+  }
+}
+
+@-webkit-keyframes squish {
+  from, to {
+    height: 0px;
+  }
+  88% {
+    height: 35px;
+  }
+}
+
+@keyframes bounce {
+  from, to {
+    bottom: 95px;
+  }
+  75% {
+    bottom: 130px;
+  }
+}
+
+@keyframes squish {
+  from, to {
+    height: 0px;
+  }
+  88% {
+    height: 35px;
+  }
+}
+
+@-moz-keyframes bounce {
+  from, to {
+    bottom: 95px;
+  }
+  75% {
+    bottom: 130px;
+  }
+}
+
+@-moz-keyframes squish {
+  from, to {
+    height: 0px;
+  }
+  88% {
+    height: 35px;
+  }
+}
+
+@-o-keyframes bounce {
+  from, to {
+    bottom: 95px;
+  }
+  75% {
+    bottom: 130px;
+  }
+}
+
+@-o-keyframes squish {
+  from, to {
+    height: 0px;
+  }
+  88% {
+    height: 35px;
+  }
+}
+
+/*******************************************************************************
+Alert Message
+*******************************************************************************/
+#mail-container {
+  position: relative;
+  bottom: 140px;
+  height:0px;
+  left: 220px;
+}
+
+
+#mailbox {
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  width: 100px;
+  top: 200px;
+  z-index: 3;
+}
+
+#mailhole {
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background: black;
+  height: 7px;
+  width: 64px;
+  position: relative;
+  left: 23px;
+  top: 78px;
+  z-index: 1;
+}
+
+#message {
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  width: 50px;
+  left: 25px;
+  top: -30px;
+  z-index: 2;
+  -webkit-animation: bounce-mail .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  animation: bounce-mail .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -moz-animation: bounce-mail .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+  -o-animation: bounce-mail .8s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+@-webkit-keyframes bounce-mail {
+  from, to {
+    top: 30px;
+  }
+  75% {
+    top: -10px;
+  }
+}
+
+@keyframes bounce-mail {
+  from, to {
+    top: 30px;
+  }
+  75% {
+    top: -10px;
+  }
+}
+
+@-moz-keyframes bounce-mail {
+  from, to {
+    top: 30px;
+  }
+  75% {
+    top: -10px;
+  }
+}
+
+@-o-keyframes bounce-mail {
+  from, to {
+    top: 30px;
+  }
+  75% {
+    top: -10px;
+  }
+}

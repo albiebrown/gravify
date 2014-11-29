@@ -16,56 +16,102 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/albiebrown/gravify">View on GitHub</a>
-
           <h1 id="project_title">Gravify</h1>
-          <h2 id="project_tagline">Falling with Style: A CSS3 Bouncing Effect that Mimics Gravity</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/albiebrown/gravify/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/albiebrown/gravify/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+          <h2 id="project_tagline">Falling with Style: A CSS3 Animation to Mimic Gravity</h2>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a id="the-problem" class="anchor" href="#the-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Problem</h3>
+        <h2>
+<a id="the-problem" class="anchor" href="#the-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Problem</h2>
 
-<p>A long, long time ago (in the summer of 2014), when I did everything in my stylesheet, I came across a peculiar problem. I wanted to use CSS3 to give a ball object the effect of bouncing (or "falling with style") in accordance with the natural laws of physics. I scoured the internet for some way to breathe gravity into this ball. After hours looking through StackOverflow and CSS docs, I had found a few options, though I remained unsatisfied. Using JavaScript and JQuery would be excessive and inefficient for such a minor task that should be easily solvable with the existing animation options in CSS3. I first tried using the ease-in/out transitions that CSS provides, and while these appeared smooth, they did not provide a feeling of natural acceleration. Many sites I visited suggested an extensive keyframe function to time each bounce. These functions appeared verbose and redundant in code, and every new bouncing object would need an entirely different function. What's more, the effect created still appeared choppy and unprofessional. </p>
+<p>A long, long time ago (in the summer of 2014), when I did everything in my stylesheet, I came across a peculiar problem.
+    I wanted to use CSS3 to give a ball object the effect of bouncing in accordance with the natural laws of physics.
+    I scoured the internet for some way to breathe gravity into this ball.
+    After hours looking through StackOverflow and CSS docs, I had found a few options, though I remained unsatisfied.
+    Using <a href="http://stackoverflow.com/questions/8825519/how-to-create-a-gravity-effect-with-javascript" target="_blank">JavaScript and JQuery</a> would be excessive and inefficient for such a minor task that should be easily solvable with the existing animation options in CSS3.
+    I first tried using the <a href="http://cbateman.com/blog/bouncing-along-css3-animation/" target="_blank">ease-in/out transitions</a> that CSS provides, and while these appeared smooth, it was very difficult to attain a feeling of natural acceleration, and each new bouncing object would need an entirely different function found through extensive trial and error.
+    Many sites I visited suggested an <a href="http://cssdeck.com/labs/css3-bouncing-ball" target="_blank">extensive keyframe function</a> to time each bounce. These functions appeared verbose and redundant in code. What's more, the created effect still appeared choppy and unprofessional.</p>
 
-<h3>
-<a id="the-solution" class="anchor" href="#the-solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution</h3>
+<div style="height: 20px;"></div>
+<h2><a id="the-solution" class="anchor" href="#the-solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution</h2>
+<p>Finally, I began experimenting with a <a href="http://www.cubic-bezier.com/" target="_blank">cubic-bezier curve</a>, though all the sample functions I found were slightly off. Still, this was the closest I had come. I started from scratch, spending hours of trial-and-error to fine tune this versatile function, until finally, something just clicked.</p>
 
-<p>Finally, I came across someone's suggestion to try using a cubic-bezier curve, though all the sample functions I found we slightly off. Still, this was the closest I had come. I started from scratch, spending hours of trial-and-error to fine tune this versatile function, until finally, something just clicked.</p>
-
-<p>First, define your bounce animation by setting the position change for your bounce using a keyframe function:</p>
+<p>To easily implement this, first define your bounce animation by set the overall position change of your object using a keyframe function (for non-modern browser compatability, see stylesheet for this page):</p>
 
 <pre><code>@-webkit-keyframes bounce {
   from, to {
-    bottom: [bottom of bounce location]px;
-    height: [squished height at bottom of bounce]px;
+    bottom: [bottom_of_bounce_location]px;
+    height: [squished_height_at_bottom_of_bounce]px;
   }
-  75% {
-    bottom: [top of bounce location]px;
-    height: [full height at top of bounce]px;
+  80% {
+    bottom: [top_of_bounce_location]px;
+    height: [full_height_at_top_of_bounce]px;
   }
 }
 </code></pre>
-
-<p>Now, by adding just one CSS3 transition/timing to your stylesheet, you may give your bounce animation the effect of accelerating under a gravitational force:</p>
-
+<p></p>
+          <p>Next, calculate the duration needed:</p>
+          <p>duration_per_bounce ≈ (((top_of_bounce_location) - (bottom_of_bounce_location))/125)</p>
+<p>Then, by adding just one CSS3 transition/timing to your stylesheet, you may give your bounce animation the effect of accelerating under a gravitational force:</p>
 <pre><code>#OBJECT-TO-BOUNCE {
-    /*duration per bounce ≈ (((top of bounce location) - (bottom of bounce location))/125)*/ 
-    -webkit-animation: bounce [duration per bounce] cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+
+    -webkit-animation: bounce [duration_per_bounce] cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
 }
 </code></pre>
 
-<p><img src="https://raw.githubusercontent.com/albiebrown/gravify/master/images/lamp.png"></p>
+<div style="height: 20px;"></div>
+<h2><a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+          <p>Here a few potential ideas of what you might "gravify" to add a special flair to your website in just a couple minutes.
+          Feel free to copy the CSS from this page's stylesheet to implement these effects on your own!</p>
 
-<p><img src="https://raw.githubusercontent.com/albiebrown/gravify/master/images/gravify.png" alt=""></p>
+
+<h4><a id="mail-example" class="anchor" href="#mail-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alert Messages</h4>
+<p>The bouncing effect has a very practical use in websites as a means to accentuate a notification or alert.
+    Here, we see an unread message alert for an online email client:</p>
+
+<div id="mail-container">
+<img id="mailbox" class="" src="images/mail.png">
+<div id="mailhole"></div>
+<img id="message" class="" src="images/message.png">
+</div>
+
+<div style="height: 200px;"></div>
+
+
+<h4><a id="bouncing-ball" class="anchor" href="#bouncing-ball" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bouncy Ball:</h4>
+<p>This implementation shows a typical object acting under the effects of gravity.
+The bounce animation, which is really just a specially-timed translation, may also be paired with other effects.
+In this example, we see a rotation, and a slight height transformation to add the illusion of elasticity.
+    The shadow simply scales concurrently with each bounce using the same magical cubic-bezier curve.</p>
+
+<p>
+    <div id="container1" class="bounce-container">
+        <div id="container2" class="ball-bounce">
+            <img id="ball" class="ball-roll" src="images/ball.png">
+        </div>
+    </div>
+</p>
+
+<div id="shadow" class="shadow shadow-bounce"></div>
+
+<div style="height: 500px;"></div>
+
+<h4><a id="squish-effect" class="anchor" href="#squish-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Squish Effect:</h4>
+<p>This effect might look rather complicated, but it uses the same functions that all the other examples on this page use.
+    The letter "I" transforms and the lamp bounces with the exact same cubic-bezier curve.
+    This simultaneous animation makes the lamp seem to squish the "I".</p>
+<p><img id="lamp" src="images/lamp.png"></p>
+
+<div id="gravify">
+    <p><img id="gravtext" class="gravifytext" src="images/grav.png"></p>
+    <p><img id="itext" class="gravifytext" src="images/i.png"></p>
+    <p><img id="fytext" class="gravifytext" src="images/fy.png"></p>
+</div>
+
+<div style="height: 200px;"></div>
       </section>
     </div>
 
@@ -76,8 +122,6 @@
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
