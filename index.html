@@ -41,7 +41,7 @@
 
 <p>To easily implement this, first define your bounce animation by set the overall position change of your object using a keyframe function (for non-modern browser compatability, see <a href="https://github.com/albiebrown/gravify/blob/gh-pages/stylesheets/stylesheet.css" target="_blank">stylesheet</a> for this page):</p>
 
-<pre><code>@-webkit-keyframes bounce {
+<pre><code>@keyframes bounce {
   from, to {
     bottom: [bottom_of_bounce_location]px;
     height: [squished_height_at_bottom_of_bounce]px;
@@ -58,7 +58,7 @@
 <p>Then, by adding just one CSS3 transition/timing to your stylesheet, you may give your bounce animation the effect of accelerating under a gravitational force:</p>
 <pre><code>#OBJECT-TO-BOUNCE {
 
-    -webkit-animation: bounce [duration_per_bounce] cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+    animation: bounce [duration_per_bounce] cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
 }
 </code></pre>
 
